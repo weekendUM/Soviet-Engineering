@@ -8,8 +8,8 @@ from polynomial import polynomial
 #import prime_factors
 
 #x = int(input("Numar: "))
-print("Hello world!")
-test = polynomial(2,12,16,0)
+print("Hello 世界")
+test = polynomial(1,-6,9)
 #print(test.calc_value(fraction(1)))
 for i in test.calc_roots():
     print(i,' ',end='')
