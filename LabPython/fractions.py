@@ -70,11 +70,7 @@ class fraction:
         return buffer
 
     def __hash__(self):
-        buffer=0
-        hasher = str(f"{self.numerator}/{self.denominator}")
-        for i in hasher:
-            buffer+=ord(i)
-        return buffer
+        return str(f"{self.numerator}/{self.denominator}").__hash__()
 
             
 
