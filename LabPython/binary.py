@@ -1,12 +1,16 @@
 class binary:
     def __init__(self, args = []):
-        print(args)
+        #print(args)
         self.no_bits=len(args)
         self.bits=args
 
     #getters
     def get_no_bits(): return self.no_bits
     def get_bits(): return self.bits
+
+    def __add__(self,other):
+        
+        pass
 
     #functions
     def __str__(self):
