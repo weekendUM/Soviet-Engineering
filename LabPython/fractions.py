@@ -3,6 +3,7 @@ import utility
 class fraction:
     numerator = int()
     denominator = int()
+    powers = {}
 
     def simplify(self):
         divisor = utility.gcd(self.numerator, self.denominator)
@@ -60,14 +61,35 @@ class fraction:
         return True
 
     def __pow__(self, power : int):
-        buffer = self
-        for i in range(1,power):
-            #print("pasul: ", i)
-            buffer *= self
         if(power==0):
+            #print("putere 0")
             return 1
+        if(power==1):
+            #print('fractia este ',self*self)
+            #print("putere 1: ",self)
+            return self
+        elif(power%2==0):
+            #print("putere para")
+            if((power//2 in self.powers)==0):
+                if(power//2 in [0,1]):
+                    return self**(power//2)*self**(power//2)
+                self.powers[power//2] = self**(power//2)
+                #print(power//2)
+                #print(f"puterea pt {power//2} este",self**(power//2))
+                return self.powers[power//2]*self.powers[power//2]
+            #print(f"puterea pt {power//2} este",self**(power//2))
+            return self.powers[power//2]*self.powers[power//2]
+        else:
+            #print(f"in else cu {power}")
+            #print("putere impara")
+            if((power//2 in self.powers)==0):
+                self.powers[power//2] = self**(power//2)
+                return self.powers[power//2]*self.powers[power//2]*self
+            
+            return self.powers[power//2]*self.powers[power//2]*self
+        
 
-        return buffer
+        return fraction(1)
 
     def __hash__(self):
         return str(f"{self.numerator}/{self.denominator}").__hash__()

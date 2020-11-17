@@ -14,12 +14,16 @@ class polynomial:
 
     def _calc_fraction(self, x : fraction):
         sum = fraction(0,1)
+        terms=[]
+        #print('x= ',x)
         for i in range(len(self.constants)-1,-1,-1):
             #print(self.constants[i])
             self.terms.append(fraction(self.constants[i])*(x**(len(self.constants)-(i+1))))
-            #print((x**(len(self.constants)-(i+1))))
+            #print(fraction(self.constants[i])*(x**(len(self.constants)-(i+1))))
             sum+=self.terms[-1]
             #print(sum)
+        #print(sum)
+        #print()
         return sum
 
     def calc_roots(self):
