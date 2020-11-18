@@ -19,7 +19,9 @@ print("おはよう世界　Good morning World!")
 
 #print(a**7)
 
-print(bc.to_binary(12))
+a = bc.to_binary(12)
+b = bc.to_binary(20)
+print(a+b)
 
 
 #print(prime.prim(138857))
