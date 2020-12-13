@@ -22,9 +22,6 @@ print("おはよう世界　Good morning World!")
 with open("air_quality.json") as file:
     data = json.load(file)
 
-csv_dict = {}
-csv_data = []
-
 fields = []
 
 for buffer in data["meta"]["view"]["columns"]:
