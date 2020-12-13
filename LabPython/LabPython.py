@@ -1,45 +1,30 @@
+class item:
+    name = 'blank'
+    price = 0
 
-#import test_class
-import __future__
-#from fractions import fraction
-#from polynomial import polynomial
-#from fractions import fraction
-#import prime
-#import medie_note
-#import dictionary1
-#import prime_factors
-#import base_conversion as bc
-import json
-import csv
+    def __init__(self, name, price):
+        print("constructor for item class called...")
+        self.name = name
+        self.price = price
 
-#x = int(input("Numar: "))
-print("おはよう世界　Good morning World!")
-#a = fraction(-1)
-#test = polynomial(1,-6,9)
-#print(test.calc_value(fraction(1)))
-#for i in test.calc_roots():
-  #  print(i,end=' ')
+    def __hash__(self):
+        print("hashing item...")
+        return str(name + str(price)).__hash__()
 
-with open("air_quality.json") as file:
-    data = json.load(file)
+class cart():
+    items = {}
+    
+    def append(self, new_item : str, amount = 1):
+        print("adding item...")
+        self.items[new_item] = amount
 
-fields = []
+    def __get__(self, item_name : str):
+        print("showing item...")
+        return self.items[item_name]
 
-for buffer in data["meta"]["view"]["columns"]:
-    fields.append(buffer["name"])
-#print(fields)
-with open("air_quality.csv","w") as out:
-    write = csv.writer(out)
-    write.writerow(fields)
-    write.writerows(data["data"])
+cart1 = cart()
+cart1.append("suc", 3)
+cart1.append("mere", 5)
+cart1.append("paine")
 
-
-#json.detect_encoding(data)
-
-
-#print(a**7)
-
-#print(bc.to_binary(12))
-
-
-#print(prime.prim(138857))
+print(cart1.items)
