@@ -18,7 +18,7 @@ class cart():
         print("adding item...")
         self.items[new_item] = amount
 
-    def __get__(self, item_name : str):
+    def __getitem__(self, item_name : str):
         print("showing item...")
         return self.items[item_name]
 
@@ -27,4 +27,4 @@ cart1.append("suc", 3)
 cart1.append("mere", 5)
 cart1.append("paine")
 
-print(cart1.items)
+print(cart1["mere"])
