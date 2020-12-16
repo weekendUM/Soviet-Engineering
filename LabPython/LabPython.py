@@ -1,21 +1,34 @@
-import threads
-from datetime import datetime
+from multiprocessing import Process
+from datetime import datetime as time
 
-steps = 100000
-
-def iterate(thread : int,start : int, stop : int):
-    j = 0
-    k = 1
-    for i in range(start,stop):
-        j += 1
-        j /= steps
-        j+=25
+def test(start : int, end : int):
+    for i in range(start, end):
+        j=0
         for i in range(100):
-            j += 2
-        j = 0
+            j += 1
 
-threads.run(64, iterate, steps)
-print("trying on a single thread")
-starttime = datetime.now()
-iterate(0, 0, steps)
-print("time elapsed on a single thread: ", datetime.now() - starttime)
+if __name__ == '__main__':
+    #print("hello world")
+
+    no_processes = int(input("Insert the amount of processes you want to start(this should be the number of actual, non-virtual threads, your CPU has): "))
+    size = 10000000
+    processes = []
+
+    start = time.now()
+    print(f"starting {no_processes} processes...")
+    ops = size // no_processes
+    l_start = 0
+    for i in range(no_processes - 1):
+        l_stop = l_start + ops
+        processes.append(Process(target = test, args = (l_start, l_stop,)))
+        l_start = l_start + ops
+    processes.append(Process(target = test, args = (l_start, size,)))
+
+    for p in processes:
+        p.start()
+
+    for p in processes:
+        p.join()
+
+    print(f"time elapsed with {no_processes} process(es) for {size} steps: ", time.now() - start)
+

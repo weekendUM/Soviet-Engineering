@@ -50,6 +50,9 @@
     <Compile Include="prime_factors.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="processes.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="program2.py">
       <SubType>Code</SubType>
     </Compile>
