@@ -5,8 +5,7 @@
     <ProjectGuid>f2bfe56d-0460-4af5-8772-12241e21db6a</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>LabPython.py</StartupFile>
-    <SearchPath>
-    </SearchPath>
+    <SearchPath>imp_test</SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>LabPython</Name>
@@ -28,6 +27,7 @@
     <Compile Include="binary.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="cart.py" />
     <Compile Include="dictionary1.py">
       <SubType>Code</SubType>
     </Compile>
@@ -50,6 +50,9 @@
     <Compile Include="prime_factors.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="processes.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="program2.py">
       <SubType>Code</SubType>
     </Compile>
@@ -57,6 +60,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="test_class.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="threads.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="utility.py">

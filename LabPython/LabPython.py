@@ -1,45 +1,34 @@
+from multiprocessing import Process
+from datetime import datetime as time
 
-#import test_class
-import __future__
-#from fractions import fraction
-#from polynomial import polynomial
-#from fractions import fraction
-#import prime
-#import medie_note
-#import dictionary1
-#import prime_factors
-#import base_conversion as bc
-import json
-import csv
+def test(start : int, end : int):
+    for i in range(start, end):
+        j=0
+        for i in range(100):
+            j += 1
 
-#x = int(input("Numar: "))
-print("おはよう世界　Good morning World!")
-#a = fraction(-1)
-#test = polynomial(1,-6,9)
-#print(test.calc_value(fraction(1)))
-#for i in test.calc_roots():
-  #  print(i,end=' ')
+if __name__ == '__main__':
+    #print("hello world")
 
-with open("air_quality.json") as file:
-    data = json.load(file)
+    no_processes = int(input("Insert the amount of processes you want to start(this should be the number of actual, non-virtual threads, your CPU has): "))
+    size = 10000000
+    processes = []
 
-fields = []
+    start = time.now()
+    print(f"starting {no_processes} processes...")
+    ops = size // no_processes
+    l_start = 0
+    for i in range(no_processes - 1):
+        l_stop = l_start + ops
+        processes.append(Process(target = test, args = (l_start, l_stop,)))
+        l_start = l_start + ops
+    processes.append(Process(target = test, args = (l_start, size,)))
 
-for buffer in data["meta"]["view"]["columns"]:
-    fields.append(buffer["name"])
-#print(fields)
-with open("air_quality.csv","w") as out:
-    write = csv.writer(out)
-    write.writerow(fields)
-    write.writerows(data["data"])
+    for p in processes:
+        p.start()
 
+    for p in processes:
+        p.join()
 
-#json.detect_encoding(data)
+    print(f"time elapsed with {no_processes} process(es) for {size} steps: ", time.now() - start)
 
-
-#print(a**7)
-
-#print(bc.to_binary(12))
-
-
-#print(prime.prim(138857))
