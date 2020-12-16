@@ -59,6 +59,9 @@
     <Compile Include="test_class.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="threads.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="utility.py">
       <SubType>Code</SubType>
     </Compile>
