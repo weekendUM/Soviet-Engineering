@@ -11,7 +11,7 @@ if __name__ == '__main__':
     #print("hello world")
 
     no_processes = int(input("Insert the amount of processes you want to start(this should be the number of actual, non-virtual threads, your CPU has): "))
-    size = 10000000
+    size = 1000000000
     processes = []
 
     start = time.now()
