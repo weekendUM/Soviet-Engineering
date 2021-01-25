@@ -1,34 +1,70 @@
-from multiprocessing import Process
-from datetime import datetime as time
+a= [3,1,5,10]
+b= [4,2,6,1]
+c= [5,3,1,7]
+op = 0
 
-def test(start : int, end : int):
-    for i in range(start, end):
-        j=0
-        for i in range(100):
-            j += 1
+def n3():
+    global op
+    rez = False
+    for i in a:
+        for j in b:
+            for k in c:
+                op += 1
+                if(i==j==k):
+                    rez = True
+    return rez
 
-if __name__ == '__main__':
-    #print("hello world")
 
-    no_processes = int(input("Insert the amount of processes you want to start(this should be the number of actual, non-virtual threads, your CPU has): "))
-    size = 1000000000
-    processes = []
 
-    start = time.now()
-    print(f"starting {no_processes} processes...")
-    ops = size // no_processes
-    l_start = 0
-    for i in range(no_processes - 1):
-        l_stop = l_start + ops
-        processes.append(Process(target = test, args = (l_start, l_stop,)))
-        l_start = l_start + ops
-    processes.append(Process(target = test, args = (l_start, size,)))
+def n2():
+    global op
+    rez =  False
+    for i in a:
+        for j in b:
+            op += 1
+            if(i==j):
+                for k in c:
+                    op += 1
+                    if(i==k):
+                        rez = True
+                        break
+    return rez
 
-    for p in processes:
-        p.start()
+def maxnm(m : int):
+    global op
+    rez = False
+    n = len(a)
+    ap = [0] * (m + 1)
+    for i in a:
+        op += 1
+        ap[i] += 1
+    for i in b:
+        op += 1
+        ap[i] += 1
+    for i in c:
+        op += 1
+        ap[i] += 1
+    for i in ap:
+        op += 1
+        if(i == 3):
+            rez = True
+    return rez
 
-    for p in processes:
-        p.join()
+def merge():
+    global op
+    rez = False
+    i  = 0
+    j = 0
+    while(i != len(a)-1 and j != len(b)-1):
+        if(a[i] != b[j]):
+            pass
+    return rez
 
-    print(f"time elapsed with {no_processes} process(es) for {size} steps: ", time.now() - start)
 
+print(n3(), op)
+op = 0
+print(n2(), op)
+op = 0
+print(maxnm(10), op)
+op = 0
+print(merge(), op)
