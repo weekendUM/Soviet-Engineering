@@ -1,22 +1,16 @@
-A = [
-    [3,6,10],
-    [5,9,12],
-    [11,14,16]
-    ]
+v = [1,3,5,7,8,12]
 
-def searchEl(el):
-    i = 0
-    j = len(A[0]) - 1
-    while(i != len(A) and j != -1):
-        if(A[i][j] == el):
-            return True
-        elif(A[i][j] > el):
-            j -= 1
-            continue
-        elif(A[i][j] < el):
-            i += 1
-            continue
-        else: break
-    return False
+def insert(el, left, right):
+    if(left >= right):
+        return left
+    l1 = (left + right) // 2
+    l2 = (left + right) // 2 + 1
+    if(el > v[l1]):
+        if(el < v[l2]):
+            return l2
+        else:
+            return insert(el, l2 + 1, right)
+    else:
+        return insert(el, left, l1 - 1)
 
-print(searchEl(3))
+print(insert(6, 0, len(v) - 1))
