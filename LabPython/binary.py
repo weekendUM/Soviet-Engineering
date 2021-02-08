@@ -32,3 +32,15 @@ class binary:
         for i in self.bits:
             out+=str(i)
         return out
+
+    def dec(self):
+        bits = self.bits
+        carry = 1
+        for i in range(len(bits) - 1, -1, -1):
+            if(carry == 1):
+                if(bits[i] == 1):
+                    bits[i] = 0
+                    break
+                else:
+                    bits[i] = 1
+        return binary(bits)
