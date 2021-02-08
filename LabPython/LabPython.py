@@ -1,16 +1,10 @@
-v = [1,3,5,7,8,12]
-
-def insert(el, left, right):
-    if(left >= right):
-        return left
-    l1 = (left + right) // 2
-    l2 = (left + right) // 2 + 1
-    if(el > v[l1]):
-        if(el < v[l2]):
-            return l2
-        else:
-            return insert(el, l2 + 1, right)
+def cautareBinara(el, l, r):
+    if(r<=l):
+        return l
+    mid = (l+r) // 2
+    if(x[mid] == el):
+        return mid
+    elif(el<x[mid]):
+        return cautareBinara(el, l, mid - 1)
     else:
-        return insert(el, left, l1 - 1)
-
-print(insert(6, 0, len(v) - 1))
+        return cautareBinara(el, mid + 1, r)
